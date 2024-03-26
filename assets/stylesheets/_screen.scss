@@ -236,20 +236,10 @@ cite {
       border-bottom: 1px solid var(--color-nav-rule);
     }
 
-    &.cta {
+    &.nav-cta a {
       border: 2px solid var(--color-nav-rule);
       border-radius: .5rem;
-      padding: .1em .4em;
-      cursor: pointer;
-      transition: border .2s ease;
-
-      a {
-        display: block;
-
-        span {
-          letter-spacing: 0;
-        }
-      }
+      padding: .8em .9em;
 
       &:hover {
         border-color: var(--color-link);
@@ -314,6 +304,7 @@ cite {
 }
 
 .nav-item span {
+  display: inline-block;
   cursor: pointer;
 }
 
@@ -348,6 +339,10 @@ cite {
     border-top: 1px solid var(--color-nav-rule);
     display: block;
 
+    &:last-child {
+      border-bottom: 1px solid var(--color-nav-rule);
+    }
+
     &.active {
       a {
         font-weight: 700;
@@ -362,12 +357,6 @@ cite {
       letter-spacing: 1px;
       margin-bottom: .5rem;
       padding: 1rem 1rem .5rem;
-    }
-
-    &.cta {
-      border-bottom: 1px solid var(--color-nav-rule);
-      padding: 0;
-      border-radius: 0;
     }
 
     & a {
