@@ -89,6 +89,56 @@ atom: true
   </li>
 </ul>
 
+## Community
+
+{% assign socials = site.data.socials %}
+{% assign events = site.data.events | where_exp:"event", "event.date > site.time" %}
+<ul class="community {% unless events.size > 0 %}connect-only{% endunless %}" markdown="1">
+  <li class="{% unless socials.size > 0 and events.size > 0 %}no-grid{% endunless %}">
+    <div>
+      <h3>Connect</h3>
+      <p>Stay up-to-date with the latest in the Swift community.</p>
+    </div>
+    {% if socials.size > 0 %}
+      <ul class="article-list">
+        {%- for social in socials %}
+          {% include list-element.html element=social %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="link-grid {% unless socials.size > 0 %}link-grid-only{% endunless %} {% if socials.size > 0 %}link-grid-small{% endif %}">
+      <ul>
+        <li>
+          <a href="/blog/">
+            <img src="/assets/images/icon-swift.svg" /><span>Visit the Swift.org blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://forums.swift.org">
+            <img src="/assets/images/icon-discourse.svg" /><span>Visit the Swift forums</span>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://twitter.com/swiftlang" class="link-external">
+            <img src="/assets/images/icon-x.svg" class="with-invert" /><span>Follow @swiftlang on X</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  {% if events.size > 0 %}
+    <li>
+      <h3>Events</h3>
+      <p>Check the upcoming Swift related events.</p>
+      <ul class="event-list">
+        {%- for event in events %}
+          {% include list-element.html element=event %}
+        {% endfor %}
+      </ul>
+    </li>
+  {% endif %}
+</ul>
+
 ## Getting Involved
 
 Everyone is welcome to contribute to Swift. Contributing doesn’t just mean writing code or submitting pull request — there are many different ways for you to get involved, including answering questions on the forums, reporting or triaging bugs, and participating in the Swift evolution process.
@@ -118,16 +168,6 @@ No matter how you want to get involved, we ask that you first learn what’s exp
     <a href="/contributing/#triaging-bugs" class="cta-secondary">Learn more</a>
   </li>
 </ul>
-
-## What's New
-
-Stay up-to-date with the latest in the Swift community.
-
-<div class="links links-list-nostyle" markdown="1">
-  - [Visit the Swift.org blog](/blog/)
-  - [Visit the Swift forums](https://forums.swift.org)
-  - [Follow @swiftlang on X (formerly Twitter)](https://twitter.com/swiftlang){:target="_blank" class="link-external"}
-</div>
 
 <script>
   var featuredSnippets = document.querySelectorAll('.featured-snippet');
