@@ -36,6 +36,20 @@ layout: source
     element.className = classString;
   }
 
+  function addHeadingLinks() {
+    const headings = document.querySelectorAll('h2[id]');
+    const dash = '#';
+
+    for (const heading of headings) {
+      const dashLink = document.createElement('a');
+
+      dashLink.setAttribute('href', `${dash}${heading.id}`);
+      dashLink.innerHTML = dash;
+      heading.classList.add('with-anchor');
+      heading.appendChild(dashLink);
+    }
+  }
+
   document.getElementById('menu-toggle').addEventListener('mousedown', function() {
     const menuToggle = document.getElementById('menu-toggle');
     toggleClass(menuToggle, 'open');
@@ -57,5 +71,7 @@ layout: source
         }
       });
     });
+
+    addHeadingLinks();
   });
 })();
